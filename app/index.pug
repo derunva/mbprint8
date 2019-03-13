@@ -1,0 +1,60 @@
+doctype
+html
+  head
+    include chunks/head
+
+  body
+    include chunks/header
+    .page
+      .wrapper
+        .row
+          .column-laptop-1-4
+            .title новости
+            -
+              var news = [
+                {
+                  date: '08.07.2014',
+                  text: 'Начал работу новый формный участок на основе CTP AGFA Palladio II, производительностью 150 форм в смену   '
+                },
+                {
+                  date: '08.07.2014',
+                  text: `Начал работу новый формный участок на основе CTP AGFA Palladio II, производительностью 150 форм в смену. Начал работу новый формный участок на основе CTP AGFA Palladio II, производительностью 150 форм в смену `
+                },
+                {
+                  date: '08.07.2014',
+                  text: 'Начал работу новый формный участок на основе CTP AGFA Palladio II, производительностью 150 форм в смену   '
+                }
+              ]
+            each item in news
+              +news(item)
+          .column-laptop-3-4
+            include chunks/slider
+            .row
+              -
+                var cards = [
+                  'ЦИФРОВАЯ ПЕЧАТЬ',
+                  'ОФСЕТНАЯ ПЕЧАТЬ',
+                  'ФИНИШНАЯ ОБРАБОТКА',
+                  'ДИЗАЙН, ВЕРСТКА, КОРРЕКТУРА, ПЕРЕВОД',
+                  'КАТАЛОГ ВЫСТАВКИ',
+                  'ПЕРЕМЕННЫЕ ДАННЫЕ, ШТРИХ-КОДИРОВАНИЕ'
+                ]
+              each item, index in cards
+                -var num = index+ 1
+                .column-laptop-1-3
+                  +card({title: item, img: 'card'+num+'.png'})
+        .row
+          -
+            var cards = [
+              'ЦИФРОВАЯ ПЕЧАТЬ',
+              'ОФСЕТНАЯ ПЕЧАТЬ',
+              'ФИНИШНАЯ ОБРАБОТКА',
+              'ДИЗАЙН, ВЕРСТКА, КОРРЕКТУРА, ПЕРЕВОД',
+              'КАТАЛОГ ВЫСТАВКИ',
+              'ПЕРЕМЕННЫЕ ДАННЫЕ, ШТРИХ-КОДИРОВАНИЕ'
+            ]
+          each item, index in cards
+            -var num = index+ 1
+            .column-laptop-1-4
+              +card({title: item, img: 'card'+num+'.png'})
+  include chunks/footer

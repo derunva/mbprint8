@@ -1,0 +1,68 @@
+.page
+  flex: 1 1 auto
+  overflow-y: scroll
+  display: flex
+  flex-direction: column
+  padding-top: 30px
+  &>*
+    width: 100%
+.wrapper
+  padding: 0 $gutter/2
+  max-width: 1170px + $gutter
+  margin: 0 auto
+  &_large
+    max-width: 1170px + $gutter + 200px
+.components-wrap
+  max-width: 370px
+  margin: 0 auto
+.row
+  display: flex
+  flex-wrap: wrap
+  margin: 0 #{$gutter/2*-1}
+  &_reverse
+    flex-direction: row-reverse
+.tablet-show
+  display: none
++breakpoint(tablet)
+  .tablet-show
+    display: block
+  .tablet-hidden
+    display: none
+.laptop-show
+  display: none
++breakpoint(laptop)
+  .laptop-show
+    display: block
+  .laptop-hidden
+    display: none !important
+.m-b
+  @for $i from 1 through 5
+    &-#{$i*$v-step}
+      margin:
+        bottom: 1px * $i*$v-step 
+.column
+  @each $point in $points
+    &-#{$point}
+      @each $column in $columns
+        &-#{$column}
+          padding: 0 $gutter/2
+          width: 100% 
+.column
+  @each $column in $columns
+    &-#{$column}
+      padding: 0 $gutter/2
+      width: 100% 
+      $firstNumber: number(str-slice($column,1, 1))
+      $secondNumber: number(str-slice($column,3, 3))
+      $percents: percentage($firstNumber / $secondNumber)
+      max-width: $percents
+.column
+  @each $point in $points
+    +breakpoint($point)
+      &-#{$point}
+        @each $column in $columns
+          &-#{$column}
+            $firstNumber: number(str-slice($column,1, 1))
+            $secondNumber: number(str-slice($column,3, 3))
+            $percents: percentage($firstNumber / $secondNumber)
+            max-width: $percents

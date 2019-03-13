@@ -1,0 +1,7 @@
+.slider  
+  each slide, index in '12345'
+    .slide(class=0==index?'is-active':'')
+      picture
+        img(src="img/content/slide.png")
+      .slide__text
+        |Слайд номер #{slide}

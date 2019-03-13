@@ -1,0 +1,19 @@
+doctype
+html
+  head
+    include chunks/head
+
+  body
+    include chunks/header
+    .page
+      +card({})
+      -
+        var news = [
+          {
+            date: '08.07.2014',
+            text: 'asdasd sad asd '
+          }
+        ]
+      each item in news
+        +news(item)
+      include chunks/footer

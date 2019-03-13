@@ -1,0 +1,29 @@
+=line-height($fs, $lh)
+  line-height: $lh/$fs
+@function number($string)
+  $check: '0','1','2','3','4','5','6','7','8','9'
+  $i: 0
+  @each $item in  $check
+    @if $item == $string
+      @return $i
+    $i: $i+1 
+  @return $i
+=breakpoint($point)
+  @if $point == exlarge
+    @media (min-width: 80rem)
+      @content
+  @if $point == desktop
+    @media (min-width: 70rem)
+      @content
+  @else if $point == laptop
+    @media (min-width: 64rem)
+      @content 
+  @else if $point == tablet 
+    @media (min-width: 50rem)
+      @content
+  @else if $point == phablet
+    @media (min-width: 37.5rem)
+      @content 
+  @else if $point == mobileonly 
+    @media (max-width: 37.5rem) 
+      @content

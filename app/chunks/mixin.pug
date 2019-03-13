@@ -1,0 +1,21 @@
+mixin listMenu(arr, lastItem)
+  ul
+    each item in arr
+      li
+        a(href="#")=item.title
+        -if(item.list)
+          +listMenu(item.list)
+    li !{lastItem}
+mixin card(item)
+  a.card(class="card_"+item.mod href="#")
+    picture
+      source(srcset="img/content/420/"+item.img media="(min-width: 600px)")
+      img(src="img/content/320/"+item.img alt="")
+    .card__title=item.title
+mixin news(item)
+  .news 
+    - var dateArr = item.date.split('.')
+    .news__date
+      | #{dateArr[0]}.#{dateArr[1]}.#[span #{dateArr[2]}]
+    .news__text.
+      #{item.text} #[a(href="#") #[i.icon-arrow]]

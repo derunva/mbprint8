@@ -1,0 +1,27 @@
+.slider
+  overflow: hidden
+  position: relative
+  height: 200px
+  transition: 1.5s all ease
+.slide
+  position: absolute
+  opacity: 0
+  width: 100%
+  transition: 1.5s all ease
+  &:last-child
+    height: 500px
+  &.is-active
+    left: 0
+    opacity: 1
+  &.is-next
+    left: 100%
+    opacity: 1
+  &.is-prev
+    left: -100%
+    opacity: 1
+  &__text
+    position: absolute
+    right: 20px
+    top: 20px
+    color: #fff
+    font-size: 30px
