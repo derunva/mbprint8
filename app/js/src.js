@@ -23,7 +23,38 @@ function goToSlide(index){
   slides[index].classList.add('is-active');
   slider.style.height = slides[index].clientHeight+'px'
 }
-goToSlide(0);
+var subMenuOpeners = document.querySelectorAll('.sub-menu-open');
+[].forEach.call(subMenuOpeners, function(item){
+  item.addEventListener('click', function(){
+    let parent = this.parentElement;
+    parent.classList.toggle('is-active')
+    let sub = parent.querySelector('ul');
+    if(sub.clientHeight == 0){
+      sub.style.maxHeight = '300px'
+    }else{
+      sub.style.maxHeight = 0
+    }
+  })
+})
+function sliderInit(){
+  goToSlide(0);
+  var num =0;
+  var pins = document.createElement('div');
+  pins.classList.add('slider-pins') ; 
+  [].forEach.call(slides, function(item){
+    var pin = document.createElement('div');
+    pin.innerText = num;
+    pin.dataset.num = num;
+    num++;
+    pin.addEventListener('click', function(){
+      console.log(this.innerText, this.dataset.num)
+      goToSlide(+this.innerText);
+    })
+    pins.appendChild(pin)
+  })
+  slider.appendChild(pins)
+}
+sliderInit();
 hammertime.on('swipeleft', function(ev) {
   let current = document.querySelector('.slide.is-active');
   var index = [].indexOf.call(slides, current);

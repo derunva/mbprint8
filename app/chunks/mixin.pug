@@ -1,13 +1,18 @@
-mixin listMenu(arr, lastItem)
+mixin listMenu(arr, mod)
   ul
     each item in arr
       li
         a(href="#")=item.title
+          -if(mod == 'main')
+            -for(var i =0;i <6; i++)
+              span
+        -if(mod == 'sidebar' && item.list)
+          .sub-menu-open open
+        
         -if(item.list)
           +listMenu(item.list)
-    li !{lastItem}
 mixin card(item)
-  a.card(class="card_"+item.mod href="#")
+  a.card(class=item.mod?"card_"+item.mod:'' href="#")
     picture
       source(srcset="img/content/420/"+item.img media="(min-width: 600px)")
       img(src="img/content/320/"+item.img alt="")

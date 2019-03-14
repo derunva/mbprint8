@@ -9,6 +9,19 @@ html
       .wrapper
         .row
           .column-laptop-1-4
+            .side-menu
+              -
+                var sidebar = [
+                  {
+                    title: 'sdafdss',
+                    list: [
+                      {
+                        title: 'test'
+                      }
+                    ]
+                  }
+                ]
+              +listMenu(sidebar, 'sidebar')
             .title новости
             -
               var news = [
@@ -41,8 +54,14 @@ html
                 ]
               each item, index in cards
                 -var num = index+ 1
+                -var mod =index%3 == 0?'orange':(index-1)%3 == 0?'yellow':''
+
                 .column-laptop-1-3
-                  +card({title: item, img: 'card'+num+'.png'})
+                  +card({
+                    title: item, 
+                    img: 'card'+num+'.png',
+                    mod: mod
+                  })
         .row
           -
             var cards = [
