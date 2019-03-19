@@ -3,4 +3,42 @@
 @import 'base';
 @import 'grid';
 @import 'slider';
+.menu
+  li
+    margin-bottom: 20px
+  a
+    display: block
+    padding: 15px 10px
+    text-decoration: none
+    position: relative
+    background: #c8c8c8
+    div
+      position: relative
+      z-index: 1
+    &:hover
+      span
+        transform: scale(1)
+        opacity: 1
+    span
+      background: #fff
+      transform: scale(.5)
+      opacity: 0
+      transition: .5s ease all
+      position: absolute
+      width: 33.33%
+      height: 50%
+      $left: 0
+      $top: 50%
+      $delay: 0
+      @for $i from 1 through 6
+        
+        &:nth-of-type(#{$i})
+          transition-delay: $delay
+          top: $top
+          left: $left
+        $left: $left + 33.33%
+        $delay: $delay + .1s
+        @if( $i%3==0 )
+          $left: 0
+          $top: 0
 @import 'footer';
